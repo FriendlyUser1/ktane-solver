@@ -326,7 +326,7 @@ def morse():
 def compwires():
 	parallel = True if int(input("Is there a parallel port? (0/1) ")) == 1 else False
 	while True:
-		exit = input("Enter 'e' to exit, or just press enter to continue")
+		exit = input("Enter 'e' to exit, or just press enter to continue ")
 		if exit == 'e':
 			return "Module finished/cancelled"
 		
@@ -373,37 +373,100 @@ def wireseqs():
 	blues = 0
 	blacks = 0
 	while True:
-		exit = input("Enter 'e' to exit, or just press enter to continue")
-		if exit == 'e':
-			return "Module finished/cancelled"
-
 		foundcolour = False		
 		while not foundcolour:
 
 			# input color and letter the wire's connected to into an array [col,let]
-			wire = input("Enter the color and letter seperated by a space ").lower().split()
+			wire = input("Enter the color and letter seperated by a space or 'e' to stop: ").lower().split()			
+			if wire[0] == 'e':
+				reds = 0
+				blues = 0
+				blacks = 0
+				return "Module finished/cancelled"
 			
 			# increment the counter for that colour
 			# then check with the manual for if to cut (first will be {var} 1)
 
 			if wire[0] == "red":
+				foundcolour = True
 				reds += 1
 
-				if (reds == (3 or 4 or 6 or 7 or 8)) and  # A
-				
+				foundletter = False
+				while not foundletter: 
+					if wire[1] == 'a':
+						foundletter = True
+						if reds == 3 or reds == 4 or reds == 6 or reds == 7 or reds == 8:
+							print("Cut")
+						else:
+							print("Don't cut")
 
-
+					elif wire[1] == 'b':
+						foundletter = True
+						if reds == 2 or reds == 5 or reds == 7 or reds == 8 or reds == 9:
+							print("Cut")
+						else:
+							print("Don't cut")
+					
+					elif wire[1] == 'c':
+						foundletter = True
+						if reds == 1 or reds == 4 or reds == 6 or reds == 7:
+							print("Cut")
+						else:
+							print("Don't cut")
 
 			elif wire[0] == "blue":
+				foundcolour = True
 				blues += 1
 
+				foundletter = False
+				while not foundletter: 
+					if wire[1] == 'a':
+						foundletter = True
+						if blues == 2 or blues == 4 or blues == 8 or blues == 9:
+							print("Cut") 
+						else:
+							print("Don't cut")
 
-
+					elif wire[1] == 'b':
+						foundletter = True
+						if blues == 1 or blues == 3 or blues == 5 or blues == 6:
+							print("Cut")
+						else:
+							print("Don't cut")
+					
+					elif wire[1] == 'c':
+						foundletter = True
+						if blues == 2 or blues == 6 or blues == 7 or blues == 8:
+							print("Cut")
+						else:
+							print("Don't cut")
 
 			elif wire[0] == "black":
+				foundcolour = True
 				blacks += 1
 
+				foundletter = False
+				while not foundletter: 
+					if wire[1] == 'a':
+						foundletter = True
+						if blacks == blacks == 1 or blacks == 2 or blacks == 4 or blacks == 7:
+							print("Cut") 
+						else:
+							print("Don't cut")
 
+					elif wire[1] == 'b':
+						foundletter = True
+						if blacks == blacks == 1 or blacks == 3 or blacks == 5 or blacks == 6 or blacks == 7:
+							print("Cut")
+						else:
+							print("Don't cut")
+					
+					elif wire[1] == 'c':
+						foundletter = True
+						if blacks == 1 or blacks == 2 or blacks == 4 or blacks == 6 or blacks == 8 or blacks == 9:
+							print("Cut")
+						else:
+							print("Don't cut")
 
 # Game loop
 while True:
@@ -426,9 +489,9 @@ while True:
 		print(memory())
 	elif module == "morse" or module == "morse code":
 		print(morse())
-	elif module == ("complicated wires" or "complicated" or "comp wires" or "comp"):
+	elif module == "complicated wires" or module == "complicated" or module == "comp wires" or module == "comp":
 		print(compwires())
-	elif module == ("wire sequences" or "wire sequence" or "wire seq" or "seq" or "wire seqs" or "seqs" or "sequence" or "sequences"):
+	elif module == "wire sequences" or module == "wire sequence" or module == "wire seq" or module == "seq" or module == "wire seqs" or module == "seqs" or module == "sequence" or module == "sequences":
 		print(wireseqs())
 
 	else:
