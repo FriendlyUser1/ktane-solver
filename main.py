@@ -97,7 +97,7 @@ def button():
 		return "Release when the timer has a 1"
 
 def keypad():
-	print("Enter your symbol names seperated by a space: ")
+	print("Enter your symbol names separated by a space: ")
 	symbols = input().split()
 
 	columns = [["head","triforce","lambda","lightning","alien","H","backc"],["backe","head","backc","e","stare","H","?"],["copyright","w","e","K","R","lambda","stare"],["6","P","b","alien","K","?","face"],["trident","face","b","c","P","3","starf"],["6","backe","puzzle","ae","trident","N","omega"]]
@@ -124,7 +124,7 @@ def simon():
 
 	while True:
 		print("Enter the colours (in letters) or 'e' to exit module: ")
-		cols = input().lower().split("")
+		cols = list(input().lower())
 		if cols[0] == "e":
 			return "Module finished"
 		ans = []
@@ -163,24 +163,24 @@ def simon():
 					if cols[k] == "g": ans.append("Blue")
 					if cols[k] == "y": ans.append("Red")
 		
-		return(" ".join(ans))
+		print(" ".join(ans))
 
 def wof():
 	for q in range(5):
 
 		# input display
-		disp = input("What does the display say? (enter 'b' for empty display)").lower()
+		disp = input("What does the display say? (enter 'b' for empty display) ").lower()
 		
 		# find and output location for that word(s)
 		if disp == "ur":
 			pos = "top left"
-		elif disp == ("first" or "okay" or "c"):
+		elif disp == "first" or disp == "okay" or disp == "c":
 			pos = "top right"
-		elif disp == ("yes" or "nothing" or "led" or "they are"):
+		elif disp == "yes" or disp == "nothing" or disp == "led" or disp == "they are":
 			pos = "middle left"
-		elif disp == ("b" or "reed" or "leed" or "they're"):
+		elif disp == "b" or disp == "reed" or disp == "leed" or disp == "they're":
 			pos = "bottom left"
-		elif disp == ("blank" or "read" or "red" or "you" or "your" or "you're" or "their"):
+		elif disp == "blank" or disp == "read" or disp == "red" or disp == "you" or disp == "your" or disp == "you're" or disp == "their":
 			pos = "middle right"
 		else:
 			pos = "bottom right"
@@ -205,7 +205,7 @@ def memory():
 		disp = input("What does the display say? (press 'e' to exit module) ")
 		if disp == "e":
 			return "Module cancelled"
-		disp == int(disp)
+		disp = int(disp)
 
 		# find and output instruction and record position & label for each in an array [pos,lab]
 		if i == 1:
@@ -228,7 +228,7 @@ def memory():
 		elif i == 2:
 			if disp == 1:
 				print("Press the button with label 4")
-				pos = input("What position is that?")
+				pos = input("What position is that? ")
 				stage2 = [pos,'4']
 				i += 1
 			elif disp == 3:
@@ -260,7 +260,7 @@ def memory():
 				i += 1
 			elif disp == 4:
 				print("Press the button with label 4")
-				pos = input("What position is that?")
+				pos = input("What position is that? ")
 				stage3 = [pos,'4']
 				i += 1
 
@@ -303,7 +303,7 @@ def morse():
                     'u':'..-', 'v':'...-', 'w':'.--',
                     'x':'-..-', 'y':'-.--', 'z':'--..'}
 
-	print("Input the message in dots(.) and dashes(-) with each letter seperated by a space: ")
+	print("Input the message in dots(.) and dashes(-) with each letter separated by a space: ")
 	message = input()
 
 	message += ' '
@@ -321,7 +321,38 @@ def morse():
 				decipher += list(morsecodedict.keys())[list(morsecodedict.values()).index(citext)]
 				citext = ''
 	
-	return decipher
+	if decipher == 'shell':
+		return "Press at 3.505"
+	elif decipher == 'halls':
+		return "Press at 3.515"
+	elif decipher == 'slick':
+		return "Press at 3.522"
+	elif decipher == 'trick':
+		return "Press at 3.532"
+	elif decipher == 'boxes':
+		return "Press at 3.535"
+	elif decipher == 'leaks':
+		return "Press at 3.542"
+	elif decipher == 'strobe':
+		return "Press at 3.545"
+	elif decipher == 'bistro':
+		return "Press at 3.552"
+	elif decipher == 'flick':
+		return "Press at 3.555"
+	elif decipher == 'bombs':
+		return "Press at 3.565"
+	elif decipher == 'break':
+		return "Press at 3.572"
+	elif decipher == 'brick':
+		return "Press at 3.575"
+	elif decipher == 'steak':
+		return "Press at 3.582"
+	elif decipher == 'sting':
+		return "Press at 3.592"
+	elif decipher == 'vector':
+		return "Press at 3.595"
+	elif decipher == 'beats':
+		return "Press at 3.600"
 
 def compwires():
 	parallel = True if int(input("Is there a parallel port? (0/1) ")) == 1 else False
@@ -377,7 +408,7 @@ def wireseqs():
 		while not foundcolour:
 
 			# input color and letter the wire's connected to into an array [col,let]
-			wire = input("Enter the color and letter seperated by a space or 'e' to stop: ").lower().split()			
+			wire = input("Enter the color and letter separated by a space or 'e' to stop: ").lower().split()			
 			if wire[0] == 'e':
 				reds = 0
 				blues = 0
