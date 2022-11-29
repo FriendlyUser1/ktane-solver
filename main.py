@@ -1,11 +1,14 @@
-lastdigit = "even" if int(
-    input("What is the last digit of the serial number? ")) % 2 == 0 else "odd"
-serialvowel = True if int(
-    input("Does the serial code have a vowel in it? (0/1) ")) == 1 else False
-batteries = int(input("How many batteries? "))
+# constants
+lastdigit = "undefined"
+batteries = "undefined"
+serialvowel = "undefined"
 
 
 def wires():
+    if lastdigit == "undefined":
+        lastdigit = "even" if int(
+            input("What is the last digit of the serial number? ")) % 2 == 0 else "odd"
+
     numwires = int(input("How many wires are there? "))
     lastwire = str(input("What is the colour of the last wire? "))
     lastwire = lastwire.lower()
@@ -18,7 +21,7 @@ def wires():
         if redwires == 0:
             return "Cut the second wire"
         else:
-            if lastwire[0] == "w":
+            if lastwire == "white":
                 return "Cut the last wire"
             else:
                 if bluewires > 1:
@@ -30,7 +33,7 @@ def wires():
         if redwires > 1 and lastdigit == "odd":
             return "Cut the last red wire"
         else:
-            if (lastwire[0] == "y" and redwires == 0) or bluewires == 1:
+            if (lastwire == "yellow" and redwires == 0) or bluewires == 1:
                 return "Cut the first wire"
             else:
                 yellowwires = int(input("How many yellow wires are there? "))
@@ -40,7 +43,7 @@ def wires():
                     return "Cut the second wire"
 
     if numwires == 5:
-        if lastwire[0] == "b" and lastdigit == "odd":
+        if lastwire == "black" and lastdigit == "odd":
             return "Cut the fourth wire"
         else:
             yellowwires = int(input("How many yellow wires are there? "))
@@ -71,6 +74,9 @@ def wires():
 
 
 def button():
+    if batteries == "undefined":
+        batteries = int(input("How many batteries? "))
+
     btnred = int(input("Is the button red? (0/1) "))
     btnhold = int(input("Does the button say 'Hold' (0/1)? "))
     btndet = int(input("Does the button say 'Detonate' (0/1)? "))
@@ -126,10 +132,14 @@ def keypad():
 
 
 def simon():
+    if serialvowel == "undefined":
+        serialvowel = True if int(
+            input("Does the serial code have a vowel in it? (0/1) ")) == 1 else False
+
     strikes = int(input("How many strikes do you have? "))
 
     while True:
-        print("Enter the colours (in letters) or 'e' to exit module: ")
+        print("Enter the colours (together in letters) or 'e' to exit module: ")
         cols = list(input().lower())
         if cols[0] == "e":
             return "Module finished"
@@ -391,6 +401,13 @@ def morse():
 
 
 def compwires():
+    if lastdigit == "undefined":
+        lastdigit = "even" if int(
+            input("What is the last digit of the serial number? ")) % 2 == 0 else "odd"
+
+    if batteries == "undefined":
+        batteries = int(input("How many batteries? "))
+
     parallel = True if int(
         input("Is there a parallel port? (0/1) ")) == 1 else False
     while True:
@@ -576,30 +593,31 @@ def password():
 
 # Game loop
 while True:
-    module = input("Enter module or 'e' to stop: ").lower()
-
+    module = input("Enter module or 'e' to stop: ")
+    module = module.lower()
     if module == "e":
         print("\nIf you defused it, well done!\n\n..if you didn't, gl for next time lol")
         break
-    if "wire" in module:
+    if "seq" in module:
+        print(wireseqs())
+    elif "wire" in module:
         print(wires())
     elif "button" in module:
         print(button())
     elif "keypad" in module:
         print(keypad())
-    elif "simon" in module == "simon says":
+    elif "simon" in module:
         print(simon())
-    elif "wof" in module or "first" in module or "who" in module:
+    elif "wof" in module or "first" in module:
         print(wof())
-    elif "mem" in module:
+    elif module in "memory":
         print(memory())
     elif "morse" in module:
         print(morse())
     elif "comp" in module:
         print(compwires())
-    elif "seq" in module:
-        print(wireseqs())
     elif "pass" in module:
         print(password())
+
     else:
         print("Module not found")
