@@ -87,8 +87,11 @@ def button():
         batteries = int(input("How many batteries? "))
 
     btnred = int(input("Is the button red? (0/1) "))
-    btnhold = int(input("Does the button say 'Hold' (0/1)? "))
+    btnhold = 0
     btndet = int(input("Does the button say 'Detonate' (0/1)? "))
+    
+    if btndet == 0:
+        btnhold = int(input("Does the button say 'Hold' (0/1)? "))        
 
     if batteries > 1 and btndet == 1:
         return "Press and immediately release"
@@ -133,7 +136,7 @@ def keypad():
 
         for i in range(len(columns[tocheck])):
             for j in range(len(symbols)):
-                if symbols[j] == columns[tocheck][i]:
+                if symbols[j].lower() == columns[tocheck][i].lower():
                     answer.append(symbols[j])
 
         tocheck += 1
