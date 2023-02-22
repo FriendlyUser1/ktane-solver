@@ -670,11 +670,21 @@ def wireseqs():
 
 
 def password():
-    first = list(input("Enter the letters for the first letter of the password: "))
-    second = list(input("Enter the letters for the second letter of the password: "))
-    third = list(input("Enter the letters for the third letter of the password: "))
-    fourth = list(input("Enter the letters for the fourth letter of the password: "))
-    fifth = list(input("Enter the letters for the fifth letter of the password: "))
+    first = list(
+        input("Enter the letters for the first letter of the password: ").lower()
+    )
+    second = list(
+        input("Enter the letters for the second letter of the password: ").lower()
+    )
+    third = list(
+        input("Enter the letters for the third letter of the password: ").lower()
+    )
+    fourth = list(
+        input("Enter the letters for the fourth letter of the password: ").lower()
+    )
+    fifth = list(
+        input("Enter the letters for the fifth letter of the password: ").lower()
+    )
 
     words = [
         "about",
