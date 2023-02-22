@@ -500,7 +500,7 @@ def compwires():
 
         if white:
             if star and led:
-                print("Cut") if batteries > 2 else print("Don't cut")
+                print("Cut") if batteries >= 2 else print("Don't cut")
             elif led:
                 print("Don't cut")
             else:
@@ -524,7 +524,7 @@ def compwires():
                     if star and (not led):
                         print("Cut")
                     else:
-                        print("Cut") if batteries > 2 else print("Don't cut")
+                        print("Cut") if batteries >= 2 else print("Don't cut")
 
                 else:  # just blue / blue + white (same)
                     if star and (not led):
