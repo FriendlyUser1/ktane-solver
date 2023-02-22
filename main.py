@@ -421,7 +421,7 @@ def morse():
     print(
         "Input the message in dots(.) and dashes(-) with each letter separated by a space: "
     )
-    message = input()
+    message = input().strip()
 
     message += " "
     decipher = ""
