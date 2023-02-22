@@ -1,5 +1,6 @@
 # constants
 lastdigit = "undefined"
+parallel = "undefined"
 batteries = "undefined"
 serialvowel = "undefined"
 frk = "undefined"
@@ -89,9 +90,9 @@ def button():
     btnred = int(input("Is the button red? (0/1) "))
     btnhold = 0
     btndet = int(input("Does the button say 'Detonate' (0/1)? "))
-    
+
     if btndet == 0:
-        btnhold = int(input("Does the button say 'Hold' (0/1)? "))        
+        btnhold = int(input("Does the button say 'Hold' (0/1)? "))
 
     if batteries > 1 and btndet == 1:
         return "Press and immediately release"
@@ -479,6 +480,7 @@ def morse():
 
 def compwires():
     global lastdigit
+    global parallel
     global batteries
 
     if lastdigit == "undefined":
@@ -491,7 +493,10 @@ def compwires():
     if batteries == "undefined":
         batteries = int(input("How many batteries? "))
 
-    parallel = True if int(input("Is there a parallel port? (0/1) ")) == 1 else False
+    if parallel == "undefined":
+        parallel = (
+            True if int(input("Is there a parallel port? (0/1) ")) == 1 else False
+        )
     while True:
         exit = input("Enter 'e' to exit, or just press enter to continue ")
         if exit == "e":
