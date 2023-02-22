@@ -742,6 +742,24 @@ def password():
                 return words[i]
 
 
+def knob():
+    leds = input(
+        "Enter the state of each LED by column, top to bottom (1/0) e.g.010111011011: "
+    ).strip()
+
+    if leds == "010111011011" or leds == "100111001101":
+        return "Up"
+    elif leds == "011111010011" or leds == "100110001001":
+        return "Down"
+    elif leds == "010000011101" or leds == "000000011100":
+        return "Left"
+    elif leds == "110111101110" or leds == "110111100100":
+        return "Right"
+    else:
+        print("Unknown combination. Try again.")
+        return knob()
+
+
 # Game loop
 while True:
     module = input("Enter module or 'e' to stop: ")
@@ -771,6 +789,8 @@ while True:
         print(compwires())
     elif "pass" in module:
         print(password())
+    elif "knob" in module:
+        print(knob())
 
     else:
         print("Module not found")
